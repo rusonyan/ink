@@ -1,0 +1,6 @@
+2023-03-03 23:46:03.856 | INFO     | __main__:run:45 - 监听IP:192.168.10.7 , 配置环境：home
+2023-03-03 23:46:15.738 | INFO     | lib.tcp_server.service:get_id:89 - ruson 已连接
+2023-03-03 23:46:17.153 | INFO     | __main__:flush:22 - 发现画面更新，正在分发
+2023-03-03 23:46:25.363 | INFO     | lib.tcp_server.service:flush_buffer:175 - 画面刷新完毕
+2023-03-03 23:46:25.363 | INFO     | lib.tcp_server.service:progresses:16 - -----id:ruson batter:3906 正在分发 100  -----
+2023-03-03 23:46:25.363 | INFO     | lib.tcp_server.service:progresses:18 - -----id:ruson batter:3906 分发完毕 100%  -----

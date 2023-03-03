@@ -1,0 +1,2 @@
+2023-03-03 23:37:41.504 | INFO     | __main__:run:42 - 监听IP:192.168.10.7 , 配置环境：home
+2023-03-03 23:37:45.557 | INFO     | lib.tcp_server.service:get_id:89 - ruson 已连接

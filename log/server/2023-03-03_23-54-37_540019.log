@@ -1,0 +1,22 @@
+2023-03-03 23:54:37.540 | INFO     | __main__:run:44 - 监听IP:192.168.10.7 , 配置环境：home
+2023-03-03 23:54:47.425 | INFO     | lib.tcp_server.service:get_id:84 - ruson 已连接
+2023-03-03 23:54:48.843 | INFO     | __main__:flush:22 - 发现画面更新，正在分发
+2023-03-03 23:54:56.520 | INFO     | lib.tcp_server.service:progresses:15 - -----id:ruson batter:3900 正在分发 0%  -----
+2023-03-03 23:54:56.520 | INFO     | lib.tcp_server.service:progresses:16 - -----id:ruson batter:3900 正在分发 0  -----
+2023-03-03 23:54:56.526 | INFO     | lib.tcp_server.service:progresses:16 - -----id:ruson batter:3900 正在分发 6  -----
+2023-03-03 23:54:56.619 | INFO     | lib.tcp_server.service:progresses:16 - -----id:ruson batter:3900 正在分发 13  -----
+2023-03-03 23:54:56.741 | INFO     | lib.tcp_server.service:progresses:16 - -----id:ruson batter:3900 正在分发 20  -----
+2023-03-03 23:54:56.788 | INFO     | lib.tcp_server.service:progresses:16 - -----id:ruson batter:3900 正在分发 26  -----
+2023-03-03 23:54:56.827 | INFO     | lib.tcp_server.service:progresses:16 - -----id:ruson batter:3900 正在分发 33  -----
+2023-03-03 23:54:56.941 | INFO     | lib.tcp_server.service:progresses:16 - -----id:ruson batter:3900 正在分发 40  -----
+2023-03-03 23:54:56.994 | INFO     | lib.tcp_server.service:progresses:16 - -----id:ruson batter:3900 正在分发 46  -----
+2023-03-03 23:54:57.027 | INFO     | lib.tcp_server.service:progresses:16 - -----id:ruson batter:3900 正在分发 53  -----
+2023-03-03 23:54:57.140 | INFO     | lib.tcp_server.service:progresses:16 - -----id:ruson batter:3900 正在分发 60  -----
+2023-03-03 23:54:57.182 | INFO     | lib.tcp_server.service:progresses:16 - -----id:ruson batter:3900 正在分发 66  -----
+2023-03-03 23:54:57.225 | INFO     | lib.tcp_server.service:progresses:16 - -----id:ruson batter:3900 正在分发 73  -----
+2023-03-03 23:54:57.344 | INFO     | lib.tcp_server.service:progresses:16 - -----id:ruson batter:3900 正在分发 80  -----
+2023-03-03 23:54:57.383 | INFO     | lib.tcp_server.service:progresses:16 - -----id:ruson batter:3900 正在分发 86  -----
+2023-03-03 23:54:57.428 | INFO     | lib.tcp_server.service:progresses:16 - -----id:ruson batter:3900 正在分发 93  -----
+2023-03-03 23:55:02.810 | INFO     | lib.tcp_server.service:flush_buffer:170 - 画面刷新完毕
+2023-03-03 23:55:02.810 | INFO     | lib.tcp_server.service:progresses:16 - -----id:ruson batter:3900 正在分发 100  -----
+2023-03-03 23:55:02.811 | INFO     | lib.tcp_server.service:progresses:18 - -----id:ruson batter:3900 分发完毕 100%  -----
