@@ -5,6 +5,7 @@ from loguru import logger
 
 from PIL import ImageFont, Image, ImageDraw
 
+from config import CONFIG
 from lib.util import write_new_pic
 
 conn = sqlite3.connect('meets.db')
@@ -115,7 +116,7 @@ def handle(flag=0):
             meet_list = run(flag, meet_list)
             if len(meet_list) == 0:
                 break
-            time.sleep(600)
+            time.sleep(CONFIG['sleep_time'])
 
 
 def zero_out():
@@ -153,6 +154,7 @@ def output_control(d, flag, meet_list, left_top_point=30):
         else:
             left_top_point = left_top_point + 60
         flag = flag + 1
+    d.line(((0, left_top_point), (400, left_top_point)), fill=0)
     return flag
 
 

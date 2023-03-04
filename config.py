@@ -7,5 +7,6 @@ CONFIG = {
     },
     'host': {
         'host_ip': '103.153.139.194'
-    }
+    },
+    'sleep_time':600,
 }

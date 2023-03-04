@@ -1,12 +1,8 @@
 import pickle
 from datetime import datetime, time
 
-from loguru import logger
-
-
 def is_work():
-    return time.fromisoformat('07:50:00') < time.fromisoformat(
-        datetime.now().strftime('%H:%M:%S')) < time.fromisoformat('16:30:00')
+    return time.fromisoformat(datetime.now().strftime('%H:%M:%S')) < time.fromisoformat('23:30:00')
 
 
 def set_flag(s=True):

@@ -5,7 +5,7 @@ import requests
 from PIL import ImageFont, Image, ImageDraw
 from bs4 import BeautifulSoup
 from loguru import logger
-from meet.meet import get_meet_count
+from meet.meets import get_meet_count
 
 fonts_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(__file__))), '../static/fonts')
 
@@ -60,7 +60,7 @@ def normal_out(w_state, temperature, skycon, describe, comfort, humidity, air_qu
     d.text((332, 28), '空气' + air_quality, font=min_font, fill=0)
     d.text((220, 70), str(int(temperature)) + '°', font=max_font, fill=0)
     d.text((220, 120), skycon, font=leval_three, fill=0)
-    d.multiline_text((35, 185), insert('临港的'+describe), font=leval_four, fill=0)
+    d.multiline_text((35, 200), insert('临港的'+describe), font=leval_four, fill=0)
     d.text((40, 283), '🌡', font=emoji_two_font, fill=0)
     d.text((55, 275), comfort, font=leval_four, fill=0)
     d.text((170, 275), get_meet_count() + "个会议", font=leval_four, fill=0)
