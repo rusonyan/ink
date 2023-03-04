@@ -11,7 +11,7 @@ from loguru import logger
 from progressbar import *
 import click
 
-JPG = 'C:\\Users\\xiaomi\\PycharmProjects\\ink\\out.jpg'
+JPG = 'out.jpg'
 
 logger.add('log/server/{time}.log', rotation='00:00')
 
