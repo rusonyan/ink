@@ -4,7 +4,7 @@ from datetime import datetime, time
 from loguru import logger
 
 
-def is_work() -> bool:
+def is_work():
     return time.fromisoformat('07:50:00') < time.fromisoformat(
         datetime.now().strftime('%H:%M:%S')) < time.fromisoformat('16:30:00')
 
@@ -16,11 +16,11 @@ def set_flag(s=True):
 
 def get_flag():
     with open('flag', 'rb') as f:
-        result: bool = pickle.load(f)
+        result = pickle.load(f)
         return result
 
 
-def is_flush() -> bool:
+def is_flush():
     return get_flag()
 
 

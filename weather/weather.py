@@ -51,7 +51,7 @@ def get_describe():
                          "html.parser").find('div', class_='current-abstract').getText().strip()
 
 
-def normal_out(w_state, temperature, skycon, describe: str, comfort, humidity, air_quality, result, d):
+def normal_out(w_state, temperature, skycon, describe, comfort, humidity, air_quality, result, d):
     icon = Image.open("static/img/" + w_state + ".png").resize((90, 90), Image.LANCZOS)
     result.paste(icon, (120, 70), icon)
     d.text((0, 0), '新辰·临港', font=leval_three, fill=0)

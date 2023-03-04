@@ -5,6 +5,8 @@ from loguru import logger
 
 from PIL import ImageFont, Image, ImageDraw
 
+from lib.util import write_new_pic
+
 conn = sqlite3.connect('meets.db')
 
 leval_four = ImageFont.truetype("static/fonts/siyuan.otf", 17)
@@ -13,11 +15,11 @@ title = ImageFont.truetype("static/fonts/ssm.otf", 15)
 emoji_fonts = ImageFont.truetype("static/fonts/seguiemj.ttf", 15)
 
 
-def room_convert(room_name: str) -> str:
+def room_convert(room_name: str):
     return room_name.replace("临", '').replace("楼", "F-").replace("+", "\n").replace("唐毅", '')
 
 
-def name_list_convert(name_list: str) -> str:
+def name_list_convert(name_list: str):
     return name_list.replace('、', "  ")
 
 
@@ -31,7 +33,7 @@ def get_wrap_str(people, start_point=158):
     return ''.join(wrap_str)
 
 
-def meet_print(left_top_point, room: str, name, time, people, d) -> bool:
+def meet_print(left_top_point, room: str, name, time, people, d):
     d.line(((0, left_top_point), (400, left_top_point)), fill=0)
     room_name_control(left_top_point, room, is_long(people), d)
     d.text((65, left_top_point + 5), name, font=title, fill=0)
@@ -106,10 +108,14 @@ def meet_result_print():
 def handle(flag=0):
     meet_list = get_meeting(datetime.now().strftime("%Y-%m-%d %H:%M:%S")).fetchall()
     logger.info(meet_list)
-    while len(meet_list) > 0:
-        meet_list = run(flag,meet_list)
     if len(meet_list) == 0:
         zero_out()
+    else:
+        while len(meet_list) > 0:
+            meet_list = run(flag, meet_list)
+            if len(meet_list) == 0:
+                break
+            time.sleep(600)
 
 
 def zero_out():
@@ -128,12 +134,13 @@ def run(flag, meet_list):
     flag = output_control(d, flag, meet_list)
     result.save("out.jpg", "jpeg")
     result.close()
+    write_new_pic()
     meet_list = meet_list[flag:]
-    time.sleep(600)
     return meet_list
 
 
 def output_control(d, flag, meet_list, left_top_point=30):
+    logger.info('会议列表'.format(meet_list))
     for row in meet_list:
         if not is_long(row[1]) and left_top_point > 240:
             d.line(((0, left_top_point), (400, left_top_point)), fill=0)
