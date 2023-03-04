@@ -109,9 +109,15 @@ def handle(flag=0):
     while len(meet_list) > 0:
         meet_list = run(flag,meet_list)
     if len(meet_list) == 0:
-        result = Image.new("1", (400, 300), 255)
-        d = ImageDraw.Draw(result)
-        img_init(d)
+        zero_out()
+
+
+def zero_out():
+    result = Image.new("1", (400, 300), 255)
+    d = ImageDraw.Draw(result)
+    img_init(d)
+    result.save("out.jpg", "jpeg")
+    result.close()
 
 
 def run(flag, meet_list):

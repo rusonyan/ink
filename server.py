@@ -3,7 +3,7 @@ import sys
 
 from config import CONFIG
 from lib.tcp_server.service import Service
-from lib.util import end_flush, is_flush
+from lib.util import end_flush, is_flush, is_work
 from lib.waveshare_epd import waveshare_epd
 from PIL import Image
 import socketserver
@@ -19,14 +19,26 @@ logger.add('log/server/{time}.log', rotation='00:00')
 class MyServer(Service):
     def flush(self):
         while True:
-            if is_flush():
-                logger.info("发现画面更新，正在分发")
-                data = Image.open('%s' % JPG)
-                epd = waveshare_epd.EPD(4.2)
-                self.flush_buffer(epd.getbuffer(data))
-                end_flush()
-            time.sleep(60)
-            logger.success("剩余电量:" + str(self.check_batter()))
+            if is_work():
+                self.update()
+            else:
+                self.shutdown()
+                break
+            self.connection_maintenance()
+
+    def connection_maintenance(self):
+        time.sleep(60)
+        logger.success("剩余电量:" + str(self.check_batter()))
+
+    def update(self):
+        if is_flush():
+            logger.info("发现画面更新，正在分发")
+            data = Image.open('%s' % JPG)
+            epd = waveshare_epd.EPD(4.2)
+            self.flush_buffer(epd.getbuffer(data))
+            end_flush()
+        else:
+            logger.info("未检测到画面更新")
 
     def handle(self):
         try:
@@ -36,14 +48,13 @@ class MyServer(Service):
             self.flush()
         except KeyboardInterrupt:
             self.shutdown()
-            logger.success("已关机")
             sys.exit()
 
 
 @click.command()
 @click.option('--profiles', default='home')
 def run(profiles):
-    logger.info('监听IP:{0} , 配置环境：{1}'.format(CONFIG[profiles]['host_ip'],profiles))
+    logger.info('监听IP:{0} , 配置环境：{1}'.format(CONFIG[profiles]['host_ip'], profiles))
     socketserver.allow_reuse_address = True
     server = socketserver.ThreadingTCPServer((CONFIG[profiles]['host_ip'], 6868,), MyServer)
     server.serve_forever()

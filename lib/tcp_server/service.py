@@ -13,7 +13,7 @@ pbar_cnt = 0
 def progresses(id, date):
     if date == 0:
         logger.info('-----{0} 正在分发 0%  -----'.format(id))
-    logger.info('-----{0} 正在分发 {1}  -----'.format(id, date))
+    logger.info('-----{0} 正在分发 {1}%  -----'.format(id, date))
     if date == 100:
         logger.info('-----{0} 分发完毕 100%  -----'.format(id))
 
@@ -92,6 +92,7 @@ class Service(socketserver.BaseRequestHandler):
 
     def shutdown(self):
         self.send_cmd('S')
+        logger.info("已关机")
 
     def reboot(self):
         self.send_cmd('R')
