@@ -41,7 +41,7 @@ def img_init(d):
 
 
 def meet_result_print():
-    logger.info(get_meeting())
+    logger.info('今天会议: {}'.format(get_meeting().fetchall()))
 
 
 def handle(flag=0):

@@ -103,12 +103,11 @@ def img_init(d):
 
 
 def meet_result_print():
-    logger.info(get_meeting(datetime.now().strftime("%Y-%m-%d %H:%M:%S")))
+    logger.info('当前会议:{}'.format(get_meeting(datetime.now().strftime("%Y-%m-%d %H:%M:%S")).fetchall()))
 
 
 def handle(flag=0):
     meet_list = get_meeting(datetime.now().strftime("%Y-%m-%d %H:%M:%S")).fetchall()
-    logger.info(meet_list)
     if len(meet_list) == 0:
         zero_out()
     else:
@@ -141,7 +140,7 @@ def run(flag, meet_list):
 
 
 def output_control(d, flag, meet_list, left_top_point=30):
-    logger.info('会议列表'.format(meet_list))
+    logger.info('输出会议列表{}'.format(meet_list))
     for row in meet_list:
         if not is_long(row[1]) and left_top_point > 240:
             d.line(((0, left_top_point), (400, left_top_point)), fill=0)

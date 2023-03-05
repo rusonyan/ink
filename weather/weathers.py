@@ -60,7 +60,7 @@ def normal_out(w_state, temperature, skycon, describe, comfort, humidity, air_qu
     d.text((332, 28), '空气' + air_quality, font=min_font, fill=0)
     d.text((220, 70), str(int(temperature)) + '°', font=max_font, fill=0)
     d.text((220, 120), skycon, font=leval_three, fill=0)
-    d.multiline_text((35, 200), insert('临港的'+describe), font=leval_four, fill=0)
+    d.multiline_text((35, 200), insert('临港的' + describe), font=leval_four, fill=0)
     d.text((40, 283), '🌡', font=emoji_two_font, fill=0)
     d.text((55, 275), comfort, font=leval_four, fill=0)
     d.text((170, 275), get_meet_count() + "个会议", font=leval_four, fill=0)
@@ -68,6 +68,7 @@ def normal_out(w_state, temperature, skycon, describe, comfort, humidity, air_qu
     d.text((325, 275), str(int(humidity)) + '%', font=leval_four, fill=0)
     result.save("out.jpg", "jpeg")
     result.close()
+
 
 def init(d):
     d.line(((0, 270), (400, 270)))
@@ -81,15 +82,17 @@ def handle():
     init(d)
     caiyun = requests.get('https://api.caiyunapp.com/v2.6/rpH8cgFaDop4WkXX/121.9315,30.9089/realtime').json()[
         'result']['realtime']
-    logger.info(caiyun)
+    weather_description = get_describe()
+    logger.info("天气数据源:{}".format(caiyun))
+    logger.info('天气描述: {}'.format(weather_description))
     normal_out(caiyun["skycon"],
                caiyun["temperature"],
                skycon[caiyun["skycon"]],
-               get_describe(),
+               weather_description,
                caiyun["life_index"]["comfort"]["desc"],
                caiyun["humidity"] * 100,
                caiyun['air_quality']["description"]["chn"],
-               result,d)
+               result, d)
 
 
 if __name__ == '__main__':
