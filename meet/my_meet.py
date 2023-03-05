@@ -18,25 +18,22 @@ def get_meeting():
                             MEET_NAME,
                             PEOPLE,
                             ROOM,
-                            strftime( '%H:%M', START_TIME ) AS s,
-                            strftime( '%H:%M', END_TIME ) AS e 
+                            strftime( '%H:%M', END_TIME ) AS e,
+                            strftime( '%H:%M', START_TIME ) AS s
                         FROM
                             "COMPANY" 
                         WHERE
                             PEOPLE LIKE '%闫瑞松%' 
                                 AND 
-                            datetime( START_TIME ) >= datetime(?) 
-                                AND 
-                            datetime( END_TIME ) <= datetime(?)
+                            datetime( START_TIME ) >= datetime(?)
                         ORDER BY
                             START_TIME
-                            ''', (datetime(year=now.year, month=now.month, day=now.day, hour=0),
-                                  datetime(year=now.year, month=now.month, day=now.day, hour=23)))
+                            ''', (datetime(year=now.year, month=now.month, day=now.day, hour=0),))
 
 
 def img_init(d):
     emoji_font = ImageFont.truetype("static/fonts/seguiemj.ttf", 17)
-    d.text((143, 3), '今日您有' + get_meet_count() + "个会议", font=leval_four, fill=0)
+    d.text((143, 3), '您本周' + get_meet_count() + "个会议", font=leval_four, fill=0)
     d.text((115, 10), "👁", font=emoji_font, fill=0)
 
 

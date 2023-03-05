@@ -1,22 +1,19 @@
-from datetime import datetime
 from PIL import ImageFont, Image, ImageDraw
 
-from lib.util import write_new_pic
+max_font = ImageFont.truetype('static/fonts/siyuan.otf', 35)
 
+result = Image.new("1", (400, 300), 255)
+d = ImageDraw.Draw(result)
 
-def normal_out(left_top_point=30):
-    # result = Image.new("1", (400, 300), 255)
-    # target = Image.open('static/photo/out.jpg')
-    # target.resize((400,300))
-    # result.paste(target, (0, 0))
-    # result.save("out.jpg", "jpeg")
-    PNG = Image.open('out.jpg').convert('LA')
-    gray = PNG.convert('L')
-    bw = gray.point(lambda x: 0 if x<200 else 255, '1')#Turn into bitmap and color flip
-    bw =bw.resize((400,300),Image.ANTIALIAS)
-    bw.save('out.jpg')#save Picture
+icon = Image.open("static/img/cofa.png").resize((90, 90), Image.LANCZOS)
 
-# 按间距中的绿色按钮以运行脚本。
-if __name__ == "__main__":
-    #normal_out()
-    write_new_pic()
+result.paste(icon, (80, 100), icon)
+result.paste(icon, (80, 100), icon)
+
+d.line(((200, 70), (200, 230)), fill=0, width=1)
+d.text((230, 50), '已下班', font=max_font, fill=0)
+
+d.text((40,250),'')
+
+result.save("out.jpg", "jpeg")
+result.close()

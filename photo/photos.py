@@ -13,5 +13,11 @@ def handle():
                 os.path.join(os.getcwd(), 'out.jpg'))
 
 
+def get_off_work():
+    logger.success('下班页面推送')
+    shutil.copy(os.path.join(os.getcwd(), 'static', 'photo', 'xiaban.jpg'),
+                os.path.join(os.getcwd(), 'out.jpg'))
+
+
 if __name__ == "__main__":
     handle()

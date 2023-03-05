@@ -11,6 +11,8 @@ from loguru import logger
 from progressbar import *
 import click
 
+from photo.photos import get_off_work
+
 JPG = 'out.jpg'
 
 logger.add('log/server/{time}.log', rotation='00:00')
@@ -22,9 +24,16 @@ class MyServer(Service):
             if is_work():
                 self.update()
             else:
-                self.shutdown()
+                self.off_work()
                 break
             self.connection_maintenance()
+
+    def off_work(self):
+        get_off_work()
+        data = Image.open('%s' % JPG)
+        epd = waveshare_epd.EPD(4.2)
+        self.flush_buffer(epd.getbuffer(data))
+        self.shutdown()
 
     def connection_maintenance(self):
         time.sleep(60)

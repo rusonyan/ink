@@ -4,7 +4,7 @@ import time
 from loguru import logger
 
 from config import CONFIG
-from lib.util import write_new_pic
+from lib.util import write_new_pic, is_work
 from meet import meets, my_meet
 from photo import photos
 from weather import weathers
@@ -12,11 +12,21 @@ from weather import weathers
 logger.add('log/app/{time}.log', rotation='00:00')
 
 OPERATION_FUN = [
-    weathers.handle,
     meets.handle,
+    meets.handle,
+    meets.handle,
+    meets.handle,
+    photos.handle,
     my_meet.handle,
-    photos.handle
+    my_meet.handle,
+    weathers.handle,
+    weathers.handle
 ]
+
+
+def sleep():
+    logger.info("进入长时休眠")
+    time.sleep(50400)
 
 
 def run():
@@ -26,6 +36,8 @@ def run():
         write_new_pic()
         logger.success("画面准备完毕")
         time.sleep(CONFIG['sleep_time'])
+        if is_work():
+            sleep()
 
 
 if __name__ == '__main__':

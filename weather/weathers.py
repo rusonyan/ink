@@ -54,6 +54,7 @@ def get_describe():
 def normal_out(w_state, temperature, skycon, describe, comfort, humidity, air_quality, result, d):
     icon = Image.open("static/img/" + w_state + ".png").resize((90, 90), Image.LANCZOS)
     result.paste(icon, (120, 70), icon)
+    result.paste(icon, (120, 70), icon)
     d.text((0, 0), '新辰·临港', font=leval_three, fill=0)
     d.text((310, 8), datetime.date.today().strftime('%Y-%m-%d'), font=min_font, fill=0)
     d.rounded_rectangle((325, 30, 383, 50), 5, width=1)
