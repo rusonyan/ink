@@ -36,7 +36,7 @@ def run():
         write_new_pic()
         logger.success("画面准备完毕")
         time.sleep(CONFIG['sleep_time'])
-        if is_work():
+        if not is_work():
             sleep()
 
 
