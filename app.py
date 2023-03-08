@@ -18,9 +18,7 @@ OPERATION_FUN = [
     meets.handle,
     photos.handle,
     my_meet.handle,
-    my_meet.handle,
     weathers.handle,
-    weathers.handle
 ]
 
 
