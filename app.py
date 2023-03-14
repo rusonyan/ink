@@ -12,14 +12,7 @@ from weather import weathers
 logger.add('log/app/{time}.log', rotation='00:00')
 
 OPERATION_FUN = [
-    meets.handle,
-    meets.handle,
-    meets.handle,
-    meets.handle,
-    photos.handle,
-    my_meet.handle,
-    weathers.handle,
-]
+    meets.handle]
 
 
 def sleep():
