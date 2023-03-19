@@ -51,17 +51,17 @@ def get_describe():
                          "html.parser").find('div', class_='current-abstract').getText().strip()
 
 
-def normal_out(w_state, temperature, skycon, describe, comfort, humidity, air_quality, result, d):
+def normal_out(w_state, temperature, skycon, comfort, humidity, air_quality, result, d):
     icon = Image.open("static/img/" + w_state + ".png").resize((90, 90), Image.LANCZOS)
-    result.paste(icon, (120, 70), icon)
-    result.paste(icon, (120, 70), icon)
+    result.paste(icon, (120, 100), icon)
+    result.paste(icon, (120, 100), icon)
     d.text((0, 0), '新辰·临港', font=leval_three, fill=0)
     d.text((310, 8), datetime.date.today().strftime('%Y-%m-%d'), font=min_font, fill=0)
     d.rounded_rectangle((325, 30, 383, 50), 5, width=1)
     d.text((332, 28), '空气' + air_quality, font=min_font, fill=0)
-    d.text((220, 70), str(int(temperature)) + '°', font=max_font, fill=0)
-    d.text((220, 120), skycon, font=leval_three, fill=0)
-    d.multiline_text((35, 200), insert('临港的' + describe), font=leval_four, fill=0)
+    d.text((220, 100), str(int(temperature)) + '°', font=max_font, fill=0)
+    d.text((220, 145), skycon, font=leval_three, fill=0)
+    # d.multiline_text((35, 200), insert('临港的' + describe), font=leval_four, fill=0)
     d.text((40, 283), '🌡', font=emoji_two_font, fill=0)
     d.text((55, 275), comfort, font=leval_four, fill=0)
     d.text((170, 275), get_meet_count() + "个会议", font=leval_four, fill=0)
@@ -83,13 +83,12 @@ def handle():
     init(d)
     caiyun = requests.get('https://api.caiyunapp.com/v2.6/rpH8cgFaDop4WkXX/121.9315,30.9089/realtime').json()[
         'result']['realtime']
-    weather_description = get_describe()
+    # weather_description = get_describe()
     logger.info("天气数据源:{}".format(caiyun))
-    logger.info('天气描述: {}'.format(weather_description))
     normal_out(caiyun["skycon"],
                caiyun["temperature"],
                skycon[caiyun["skycon"]],
-               weather_description,
+               # weather_description,
                caiyun["life_index"]["comfort"]["desc"],
                caiyun["humidity"] * 100,
                caiyun['air_quality']["description"]["chn"],

@@ -30,7 +30,7 @@ class MyServer(Service):
 
     def off_work(self):
         get_off_work()
-        data = Image.open('%s' % JPG)
+        data = Image.open('static/photo/xiaban.jpg')
         epd = waveshare_epd.EPD(4.2)
         self.flush_buffer(epd.getbuffer(data))
         self.shutdown()
