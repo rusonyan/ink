@@ -1,10 +1,9 @@
 import sqlite3
 import time
-from datetime import datetime
 from loguru import logger
 
 from PIL import ImageFont, Image, ImageDraw
-
+from datetime import datetime, time
 from config import CONFIG
 from lib.util import write_new_pic
 
@@ -107,7 +106,7 @@ def meet_result_print():
 
 
 def handle(flag=0):
-    meet_list = get_meeting(datetime.now().strftime("%Y-%m-%d %H:%M:%S")).fetchall()
+    meet_list = get_meeting(get_target_time()).fetchall()
     if len(meet_list) == 0:
         zero_out()
     else:
@@ -116,6 +115,16 @@ def handle(flag=0):
             if len(meet_list) == 0:
                 break
             time.sleep(CONFIG['sleep_time'])
+
+
+def get_target_time():
+    if time.fromisoformat(datetime.now().strftime('%H:%M:%S')) < time.fromisoformat('08:30:00'):
+        return datetime.now().strftime("%Y-%m-%d 08:31:00")
+    if time.fromisoformat('12:00:00') \
+            < time.fromisoformat(datetime.now().strftime('%H:%M:%S')) \
+            < time.fromisoformat('13:00:00'):
+        return datetime.now().strftime("%Y-%m-%d 13:01:00")
+    return datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
 
 def zero_out():

@@ -14,8 +14,6 @@ logger.add('log/app/{time}.log', rotation='00:00')
 OPERATION_FUN = [
     meets.handle,
     meets.handle,
-    meets.handle,
-    meets.handle,
     weathers.handle
 ]
 
