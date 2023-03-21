@@ -3,7 +3,7 @@ import time
 from loguru import logger
 
 from PIL import ImageFont, Image, ImageDraw
-from datetime import datetime, time
+from datetime import datetime,time
 from config import CONFIG
 from lib.util import write_new_pic
 
@@ -114,6 +114,7 @@ def handle(flag=0):
             meet_list = run(flag, meet_list)
             if len(meet_list) == 0:
                 break
+            import time
             time.sleep(CONFIG['sleep_time'])
 
 
