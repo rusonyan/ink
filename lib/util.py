@@ -3,6 +3,7 @@ from datetime import datetime, time
 
 
 def is_work():
+    # return True
     return time.fromisoformat(datetime.now().strftime('%H:%M:%S')) < time.fromisoformat('16:30:00')
 
 
@@ -27,3 +28,5 @@ def end_flush():
 
 def write_new_pic():
     set_flag(True)
+
+set_flag(True)
