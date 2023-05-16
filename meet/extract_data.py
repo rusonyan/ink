@@ -61,10 +61,10 @@ for merged_cell in sheet.merged_cells:
         if isinstance(timeFlag, datetime.time):
             if timeFlag < datetime.time(hour=12):
                 execute(date + timeFlag.strftime("%H:%M"), date + '12:00', row[2].value,
-                        join_people(row[3].value, row[4].value), row[5].value)
+                        join_people(row[3].value, row[4].value), row[6].value)
             else:
                 execute(date + timeFlag.strftime("%H:%M"), date + '16:30', row[2].value,
-                        join_people(row[3].value, row[4].value), row[5].value)
+                        join_people(row[3].value, row[4].value), row[6].value)
         else:
             timeing = timeFlag.split('-')
             if len(timeing[0]) == 4:
@@ -72,4 +72,4 @@ for merged_cell in sheet.merged_cells:
             if len(timeing[1]) == 4:
                 timeing[1] = '0' + timeing[1]
             execute(date + timeing[0], date + timeing[1], row[2].value, join_people(row[3].value, row[4].value),
-                    row[5].value)
+                    row[6].value)
