@@ -13,7 +13,8 @@ logger.add('log/app/{time}.log', rotation='00:00')
 
 OPERATION_FUN = [
     meets.handle,
-    weathers.handle
+    weathers.handle,
+    meets.handle,
 ]
 
 
