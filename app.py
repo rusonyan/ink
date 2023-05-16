@@ -15,6 +15,7 @@ OPERATION_FUN = [
     meets.handle,
     weathers.handle,
     meets.handle,
+    meets.handle
 ]
 
 
