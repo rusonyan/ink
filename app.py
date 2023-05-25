@@ -16,7 +16,7 @@ OPERATION_FUN = [
     # weathers.handle,
     # meets.handle,
     # meets.handle,
-    photos.handle()
+    photos.handle
 ]
 
 
