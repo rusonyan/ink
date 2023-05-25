@@ -4,7 +4,7 @@ from datetime import datetime, time
 
 def is_work():
     # return True
-    return not time.fromisoformat(datetime.now().strftime('%H:%M:%S')) < time.fromisoformat('16:30:00')
+    return time.fromisoformat(datetime.now().strftime('%H:%M:%S')) < time.fromisoformat('16:30:00')
 
 
 def set_flag(s=True):
