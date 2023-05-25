@@ -3,7 +3,7 @@ import random
 import shutil
 from loguru import logger
 
-PHOTO_ALBUM = ['lp.jpg','neibao.png']
+PHOTO_ALBUM = ['lp.jpg','nb.png']
 
 
 def handle():
