@@ -3,8 +3,7 @@ import time
 
 from loguru import logger
 
-import calendar.calendars
-from calendar import calendars
+from calendar_panle import calendars
 from config import CONFIG
 from lib.util import write_new_pic, is_work
 from meet import meets, my_meet
