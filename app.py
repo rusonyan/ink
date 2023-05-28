@@ -3,6 +3,8 @@ import time
 
 from loguru import logger
 
+import calendar.calendars
+from calendar import calendars
 from config import CONFIG
 from lib.util import write_new_pic, is_work
 from meet import meets, my_meet
@@ -16,7 +18,8 @@ OPERATION_FUN = [
     weathers.handle,
     meets.handle,
     meets.handle,
-    photos.handle
+    photos.handle,
+    calendars.handle
 ]
 
 

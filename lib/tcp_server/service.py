@@ -43,7 +43,6 @@ class Service(socketserver.BaseRequestHandler):
             msg = msg + temp
         if msg == b'':
             msg = b'$'
-        print(msg)
         return msg
 
     def check_get(self, check=b'1'):
@@ -55,7 +54,6 @@ class Service(socketserver.BaseRequestHandler):
 
     def safe_send(self, send_msg, check):
         while True:
-            print(send_msg)
             self.client.sendall(send_msg)
             if self.check_get(check):
                 break

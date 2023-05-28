@@ -1,4 +1,0 @@
-2023-03-04 00:54:49.553 | INFO     | __main__:run:17 - 开始爬取数据
-2023-03-04 00:54:49.555 | INFO     | meet.meet:handle:106 - <sqlite3.Cursor object at 0x000001E4A39AF640>
-2023-03-04 00:54:49.566 | SUCCESS  | __main__:run:20 - 画面准备完毕
-2023-03-04 00:54:59.567 | INFO     | __main__:run:17 - 开始爬取数据
