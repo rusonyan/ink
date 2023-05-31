@@ -17,7 +17,6 @@ OPERATION_FUN = [
     weathers.handle,
     meets.handle,
     meets.handle,
-    photos.handle,
     calendars.handle
 ]
 
