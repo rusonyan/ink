@@ -65,7 +65,7 @@ class MyServer(Service):
 def run(profiles):
     logger.info('监听IP:{0} , 配置环境：{1}'.format(CONFIG[profiles]['host_ip'], profiles))
     socketserver.allow_reuse_address = True
-    server = socketserver.ThreadingTCPServer((CONFIG[profiles]['host_ip'], 443,), MyServer)
+    server = socketserver.ThreadingTCPServer((CONFIG[profiles]['host_ip'], 80,), MyServer)
     server.serve_forever()
 
 
